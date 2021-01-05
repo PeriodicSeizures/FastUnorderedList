@@ -15,7 +15,7 @@ public:
 			elements.push_back(element);
 			end++;
 		}
-		return end - 1;
+		return end;
 	}
 
 	void erase(unsigned int i) {
@@ -38,6 +38,11 @@ public:
 
 	void clear() {
 		elements.clear();
+		end = -1;
+		// will work assuming that clear sets vector size to 0 (it does)
+	}
+
+	void fastClear() {
 		end = -1;
 		// will work assuming that clear sets vector size to 0 (it does)
 	}
