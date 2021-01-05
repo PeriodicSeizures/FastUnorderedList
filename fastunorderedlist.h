@@ -8,13 +8,14 @@ class FastUnorderedList {
 public:
 	FastUnorderedList() : end(-1) { }
 
-	void insert(T element) {
+	unsigned int insert(T element) {
 		if ((int)vectorSize() - 1 > end)
 			elements[++end] = element;
 		else {
 			elements.push_back(element);
 			end++;
 		}
+		return end - 1;
 	}
 
 	void erase(unsigned int i) {
@@ -39,6 +40,11 @@ public:
 		elements.clear();
 		end = -1;
 		// will work assuming that clear sets vector size to 0 (it does)
+	}
+
+	T& operator[](int n)
+	{
+		return elements[n];
 	}
 
 	const T& operator[](int n) const
